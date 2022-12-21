@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap");
+
 :root {
   --color-bg: #dcdcdc;
   --colog-text: #121212;
-  --font-main: sans-serif;
+  --font-main: "Space Grotesk", sans-serif;
 }
 
 body {
@@ -15,7 +17,7 @@ body {
   place-content: center;
 }
 
-.app {
+.App {
   padding: 5vmin;
 }
 
