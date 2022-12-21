@@ -1,13 +1,64 @@
-body {
-  & p {
-    color: orange;
-  }
-}
-
-body h1 {
-  color: blue;
+:root {
+  --color-bg: #dcdcdc;
+  --colog-text: #121212;
+  --font-main: sans-serif;
 }
 
 body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
   display: grid;
+  font-family: var(--font-main);
+  line-height: 1.5;
+  margin: 0;
+  min-block-size: 100vh;
+  place-content: center;
+}
+
+.app {
+  padding: 5vmin;
+}
+
+.grid {
+  inline-size: 90vw;
+  margin-inline: auto;
+  max-inline-size: 1440px;
+}
+
+.aspect-ratio {
+  overflow: hidden;
+  padding-block-start: 100%;
+  position: relative;
+}
+
+.aspect-ratio > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.palettes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 2em;
+}
+
+.palette {
+  box-shadow: 0px 4.5px 3.6px rgba(0, 0, 0, 0.024),
+    0px 12.5px 10px rgba(0, 0, 0, 0.035), 0px 30.1px 24.1px rgba(0, 0, 0, 0.046),
+    0px 100px 80px rgba(0, 0, 0, 0.07);
+  border-radius: 0.5em;
+  margin: 0;
+  overflow: hidden;
+}
+
+.palette__text {
+  background-color: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 1.5em;
+  text-align: center;
+  text-transform: uppercase;
 }

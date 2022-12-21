@@ -5,5 +5,10 @@ export const plugins = [
   cssnano({
     preset: "default",
   }),
-  postcssPresetEnv({ stage: 3 }),
+  postcssPresetEnv({
+    stage: 1,
+    features: {
+      "nesting-rules": true,
+    },
+  }),
 ];
