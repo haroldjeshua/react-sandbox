@@ -44,9 +44,9 @@ const Palettes = (props) => {
 
   return (
     <div className="palettes">
-      {palettes.map((palette) => {
-        <Palette key={palette.toString()} {...palette} />;
-      })}
+      {palettes.map((palette) => (
+        <Palette key={palette.toString()} {...palette} />
+      ))}
     </div>
   );
 };
@@ -58,76 +58,76 @@ const Grid = (props) => {
 const App = () => {
   const palettes = [
     {
-      from: "#f40076",
-      to: "#df98fa",
+      from: "#b08d52",
+      to: "#4b1043",
     },
     {
-      from: "#f06966",
-      to: "#fad6a6",
+      from: "#0bc788",
+      to: "#013d0a",
     },
     {
-      from: "#ff0076",
-      to: "#590fb7",
+      from: "#c500f2",
+      to: "#060219",
     },
     {
-      from: "#9055ff",
-      to: "#13e2da",
+      from: "#bcbf8f",
+      to: "#712317",
     },
     {
-      from: "#0b63f6",
-      to: "#003cc5",
+      from: "#ef23a2",
+      to: "#070062",
     },
     {
-      from: "#d6ff7f",
-      to: "#00b3cc",
+      from: "#4cc8b3",
+      to: "#160046",
     },
     {
-      from: "#e233ff",
-      to: "#ff6b00",
+      from: "#bd2122",
+      to: "#c0f8d0",
     },
     {
-      from: "#df98fa",
-      to: "#9055ff",
+      from: "#60b27e",
+      to: "#0b2a9a",
     },
     {
-      from: "#ed7b84",
-      to: "#9055ff",
+      from: "#822b58",
+      to: "#ffc168",
     },
     {
-      from: "#402565",
-      to: "#30be96",
+      from: "#efaf3f",
+      to: "#6c1d26",
     },
     {
-      from: "#402662",
-      to: "#3900a6",
+      from: "#00be55",
+      to: "#0f102a",
     },
     {
-      from: "#f14658",
-      to: "#dc2537",
+      from: "#a53ca6",
+      to: "#e9eea0",
     },
     {
-      from: "#f40076",
-      to: "#342711",
+      from: "#fbedf6",
+      to: "#835861",
     },
     {
-      from: "#000066",
-      to: "#6699ff",
+      from: "#ba8a20",
+      to: "#0e245f",
     },
     {
-      from: "#cb5eee",
-      to: "#4be1ec",
+      from: "#0b8b76",
+      to: "#0f0c16",
     },
     {
-      from: "#fa7cbb",
-      to: "#f14658",
+      from: "#b54163",
+      to: "#dffa83",
     },
     {
-      from: "#737dfe",
-      to: "#ffcac9",
+      from: "#9b018a",
+      to: "#a7e293",
     },
     {
-      from: "#2f80ed",
-      to: "#b2ffda",
+      from: "#ef71b6",
+      to: "#020c4f",
     },
   ];
 
