@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import "./App.scss";
 
@@ -96,14 +96,69 @@ const SliderControl = ({ type, title, handleClick }) => {
   );
 };
 
-function App() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+const Slider = ({ slides, heading }) => {
+  const [current, setCurrent] = useState(0);
 
-  const handleSlideClick = (index) => setCurrentSlide(index);
+  const handlePrevClick = () => {
+    const prev = current - 1;
+    setCurrent(prev < 0 ? slides.length - 1 : prev);
+  };
+
+  const handleNextClick = () => {
+    const next = current + 1;
+    setCurrent(next === slides.length ? 0 : next);
+  };
+
+  const handleSlideClick = (index) => {
+    if (current !== index) {
+      setCurrent(index);
+    }
+  };
+
+  const headingId = `slider-heading__${heading
+    .replace(/\s+/g, "-")
+    .toLowerCase()}`;
+  const wrapperTransform = {
+    transform: `translateX(-${current * (100 / slides.length)}%)`,
+  };
 
   return (
+    <div className="slider" aria-labelledby={headingId}>
+      <ul className="slider__wrapper" style={wrapperTransform}>
+        <h3 id={headingId} className="visually-hiden">
+          {heading}
+        </h3>
+        {slides.map((slide) => (
+          <Slide
+            key={slide.index}
+            slide={slide}
+            current={current}
+            handleSlideClick={handleSlideClick}
+          />
+        ))}
+      </ul>
+
+      <div className="slider__controls">
+        <SliderControl
+          type="previous"
+          title="Go to previous slide"
+          handleClick={handlePrevClick}
+        />
+
+        <SliderControl
+          type="next"
+          title="Go to next slide"
+          handleClick={handleNextClick}
+        />
+      </div>
+    </div>
+  );
+};
+
+function App() {
+  return (
     <div className="App">
-      <h1>Hello World!</h1>
+      <Slider heading="Test Slider" slides={slideData} />
     </div>
   );
 }
