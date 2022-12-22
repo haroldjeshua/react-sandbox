@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
-import "./App.css";
+import "./App.scss";
 
 const slideData = [
   {
@@ -30,8 +30,10 @@ const slideData = [
 ];
 
 const Slide = ({ slide, current, handleSlideClick }) => {
+  const slideRef = useRef(null);
+
   const handleMouseMove = (e) => {
-    const el = slide.current;
+    const el = e.current;
     const r = el.getBoundingClientRect();
 
     el.style.setProperty("--x", e.clientX - r.left + Math.floor(r.width / 2));
@@ -39,21 +41,29 @@ const Slide = ({ slide, current, handleSlideClick }) => {
   };
 
   const handleMouseLeave = (e) => {
-    slide.current.style.setProperty("--x", 0);
-    slide.current.style.setProperty("--y", 0);
+    e.current.style.setProperty("--x", 0);
+    e.current.style.setProperty("--y", 0);
   };
 
-  const slide = useRef(null);
+  const handleSlideClick = (e) => {
+    handleSlideClick(slide.index);
+  };
+
+  const imageLoaded = (e) => {
+    e.target.style.opacity = 1;
+  };
 
   useEffect(() => {
-    slide.current.addEventListener("mousemove", handleMouseMove);
-    slide.current.addEventListener("mouseleave", handleMouseLeave);
+    slideRef.current.addEventListener("mousemove", handleMouseMove);
+    slideRef.current.addEventListener("mouseleave", handleMouseLeave);
+    slideRef.current.addEventListener("click", handleSlideClick);
 
     return () => {
       slide.current.removeEventListener("mousemove", handleMouseMove);
       slide.current.removeEventListener("mouseleave", handleMouseLeave);
+      slide.current.removeEventListener("click", handleSlideClick);
     };
-  }, []);
+  }, [handleSlideClick, slide.index]);
 
   const { src, button, headline, index } = slide;
   let classNames = "slide";
