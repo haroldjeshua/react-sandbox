@@ -80,3 +80,29 @@ h3 {
     transform: translateY(1px);
   }
 }
+
+// Slider Controls
+.slider__controls {
+  display: block;
+  justify-content: center;
+  position: absolute;
+  top: calc(100% + 1rem);
+  width: 100%;
+
+  .btn {
+    --size: 3rem;
+
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 100%;
+  }
+
+  &:focus {
+    border-color: var(--color-focus);
+    outline: none;
+  }
+}
