@@ -95,8 +95,8 @@ function App() {
     <div className="App">
       <div className="slider">
         <ul className="slider__wrapper">
-          {slideData.map((slide) => (
-            <Slide key={slide.index} slide={slide} current={current} />
+          {slideData.map((slide, index) => (
+            <Slide key={index} slide={slide} current={current} />
           ))}
         </ul>
         <div className="slider__controls">
