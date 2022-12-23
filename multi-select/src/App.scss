@@ -1,0 +1,180 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  padding: 24px;
+}
+
+.App {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.react-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: auto;
+}
+
+.react-select-trigger {
+  position: relative;
+  width: 100%;
+  height: 31px;
+  display: flex;
+  font-size: 14px;
+  text-align: left;
+  outline: 0;
+  padding: 6px 27px 6px 6px;
+  border: 1px solid #d3d4d4;
+  border-radius: 3px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  background: {
+    color: #fff;
+    image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21px" height="21px" viewBox="0 0 21 21"><polygon points="10.5,12 7,8.5 14,8.5"/></svg>');
+    repeat: no-repeat;
+    position: calc(100% - 5px) center;
+  }
+
+  &,
+  &:active {
+    color: black;
+  }
+
+  //   &.react-select-enabled {}
+
+  &.react-select-target-attached-top {
+    border-radius: 0 0 3px 3px;
+  }
+
+  &.react-select-target-attached-bottom {
+    border-radius: 3px 3px 0 0;
+  }
+
+  // truncate children with ellipsis
+  * {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.react-select-trigger__option {
+  user-select: none;
+
+  & + & {
+    margin-left: 8px;
+  }
+
+  .react-select-trigger--multiple & {
+    background: #e6f9ff;
+    padding: 0 4px;
+    border-radius: 4px;
+  }
+}
+
+.react-select-trigger__arrow {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+}
+
+.react-select-menu {
+  background-color: white;
+  max-height: 180px;
+  padding: 3px 0;
+  border: 1px solid #e1e1e1;
+  border-radius: 0 0 3px 3px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  pointer-events: none;
+  box-shadow: 0 2px 4px 0 rgba(218, 221, 222, 0.35);
+  -webkit-tap-highlight-color: transparent;
+
+  .react-select-enabled & {
+    pointer-events: auto;
+  }
+
+  .react-select-element-attached-top & {
+    margin-top: -1px;
+    border-top: 0;
+  }
+
+  .react-select-element-attached-bottom & {
+    margin-top: 1px;
+    border-bottom: 0;
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 -2px 4px 0 rgba(218, 221, 222, 0.35);
+  }
+}
+
+.react-select-header {
+  display: flex;
+  padding: 8px;
+  border-bottom: 1px solid #f1f3f5;
+  border-top: 1px solid #f1f3f5;
+}
+
+.react-select-btn {
+  flex: 1;
+}
+
+.react-select-options {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.react-select-option {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  font-size: 14px;
+  text-indent: 4px;
+  border-radius: 2px;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    background: #fbfbfb;
+  }
+}
+
+.react-select-option__label {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.react-select-optgroup {
+  display: block;
+  padding: 3px 0;
+  cursor: default;
+  border-top: 1px solid #f1f3f5;
+
+  &:first-child {
+    border: 0;
+  }
+}
+
+.react-select-optgroup__title {
+  display: block;
+  padding: 8px 12px 6px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #909294;
+  user-select: none;
+}
