@@ -5,7 +5,7 @@ function Square() {
   const [value, setValue] = useState(null);
 
   function handleClick() {
-    console.log("clicked!");
+    setValue("X");
   }
 
   return (
@@ -16,22 +16,24 @@ function Square() {
 }
 
 function App() {
+  const [squares, setSquares] = useState(Array(9).fill(null));
+
   return (
     <>
       <div className="board-row">
-        <Square value="1" />
-        <Square value="2" />
-        <Square value="3" />
+        <Square values={squares[0]} />
+        <Square values={squares[1]} />
+        <Square values={squares[2]} />
       </div>
       <div className="board-row">
-        <Square value="4" />
-        <Square value="5" />
-        <Square value="6" />
+        <Square values={squares[3]} />
+        <Square values={squares[4]} />
+        <Square values={squares[5]} />
       </div>
       <div className="board-row">
-        <Square value="7" />
-        <Square value="8" />
-        <Square value="9" />
+        <Square values={squares[6]} />
+        <Square values={squares[7]} />
+        <Square values={squares[8]} />
       </div>
     </>
   );
