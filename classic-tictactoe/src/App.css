@@ -21,6 +21,7 @@
 }
 
 .game-info {
+  display: flex;
 }
 
 .board-row {
