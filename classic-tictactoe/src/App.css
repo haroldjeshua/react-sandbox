@@ -1,13 +1,19 @@
 #root {
   display: flex;
   flex-direction: column;
-  gap: 4px;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
   font-family: monospace;
 }
+
+.game-board {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .board-row {
   display: flex;
   gap: 4px;
