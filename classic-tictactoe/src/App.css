@@ -8,10 +8,19 @@
   font-family: monospace;
 }
 
+.game {
+  display: flex;
+  gap: 5rem;
+}
+
 .game-board {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 4px;
+}
+
+.game-info {
 }
 
 .board-row {
@@ -24,6 +33,7 @@
   height: 44px;
   min-width: 44px;
   min-height: 44px;
+  font-weight: 600;
 }
 
 .logo {
