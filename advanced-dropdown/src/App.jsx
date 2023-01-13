@@ -9,6 +9,7 @@ import {
   RiArrowRightSLine,
 } from "react-icons/ri";
 import { useState } from "react";
+import { CSSTransition } from "react-transition-group";
 
 function App() {
   return (
@@ -47,6 +48,8 @@ function NavItem(props) {
 }
 
 function DropdownMenu() {
+  const [activeMenu, setActiveMenu] = useState("main"); // settings context
+
   function DropdownItem(props) {
     return (
       <a href="#" className="menu-item">
@@ -59,13 +62,25 @@ function DropdownMenu() {
 
   return (
     <div className="dropdown">
-      <DropdownItem>My Profile</DropdownItem>
-      <DropdownItem
-        leftIcon={<RiSettings5Fill />}
-        rightIcon={<RiSettings5Fill />}
+      <CSSTransition
+        in={activeMenu === "main"}
+        unmountOnExit
+        timeout={500}
+        classNames="menu-primary"
       >
-        My Profile
-      </DropdownItem>
+        <div className="menu">
+          <DropdownItem>My Profile</DropdownItem>
+          <DropdownItem
+            leftIcon={<RiSettings5Fill />}
+            rightIcon={<RiArrowRightSLine />}
+          >
+            My Settings
+          </DropdownItem>
+          <DropdownItem leftIcon={<RiFeedbackFill />}>
+            Give Feedback
+          </DropdownItem>
+        </div>
+      </CSSTransition>
     </div>
   );
 }
