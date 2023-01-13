@@ -1,0 +1,19 @@
+:root {
+  --bg: #121212;
+  --bg-accent: #555555;
+  --text: #dcdcdc;
+  --border: 1px solid #474a4d;
+  --radius: 8px;
+  --speed: 500ms;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
