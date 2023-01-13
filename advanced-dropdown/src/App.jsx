@@ -10,6 +10,11 @@ import {
   RiArrowLeftLine,
   RiFeedbackFill,
   RiAccountCircleFill,
+  RiLock2Fill,
+  RiTranslate2,
+  RiNewspaperLine,
+  RiListCheck,
+  RiRotateLockFill,
 } from "react-icons/ri";
 import { useState } from "react";
 import { CSSTransition } from "react-transition-group";
@@ -102,7 +107,14 @@ function DropdownMenu() {
           <DropdownItem leftIcon={<RiArrowLeftLine />} goToMenu="main">
             Settings
           </DropdownItem>
-          <DropdownItem>Settings</DropdownItem>
+          <DropdownItem leftIcon={<RiSettings5Fill />}>Settings</DropdownItem>
+          <DropdownItem leftIcon={<RiRotateLockFill />}>
+            Privacy Checkup
+          </DropdownItem>
+          <DropdownItem leftIcon={<RiLock2Fill />}>Privacy Center</DropdownItem>
+          <DropdownItem leftIcon={<RiListCheck />}>Activity Log</DropdownItem>
+          <DropdownItem leftIcon={<RiNewspaperLine />}>Feed</DropdownItem>
+          <DropdownItem leftIcon={<RiTranslate2 />}>Language</DropdownItem>
         </div>
       </CSSTransition>
     </div>
