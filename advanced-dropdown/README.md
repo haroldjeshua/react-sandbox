@@ -12,5 +12,13 @@ Topics covered:
 Notes:
 
 1. Composition: write small reusable components
+   - eg:
+     - functional components:
+       - parent/children/inner components
+       - inline components
 2. Props: pass data from parent to child
+   - eg:
+     - icon props
+     - props for parent
 3. State:
+   - eg: open state for dropdown

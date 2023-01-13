@@ -5,6 +5,8 @@ import {
   RiAddFill,
   RiNotification2Fill,
   RiArrowDownSFill,
+  RiSettings5Fill,
+  RiArrowRightSLine,
 } from "react-icons/ri";
 import { useState } from "react";
 
@@ -16,7 +18,7 @@ function App() {
       <NavItem icon={<RiMessengerFill />} />
       <NavItem icon={<RiNotification2Fill />} />
       <NavItem icon={<RiArrowDownSFill />}>
-        <p>Dropdown Here</p>
+        <DropdownMenu></DropdownMenu>
       </NavItem>
     </Navbar>
   );
@@ -41,6 +43,30 @@ function NavItem(props) {
 
       {open && props.children}
     </li>
+  );
+}
+
+function DropdownMenu() {
+  function DropdownItem(props) {
+    return (
+      <a href="#" className="menu-item">
+        <span className="icon-button">{props.leftIcon}</span>
+        {props.children}
+        <span className="icon-right">{props.rightIcon}</span>
+      </a>
+    );
+  }
+
+  return (
+    <div className="dropdown">
+      <DropdownItem>My Profile</DropdownItem>
+      <DropdownItem
+        leftIcon={<RiSettings5Fill />}
+        rightIcon={<RiSettings5Fill />}
+      >
+        My Profile
+      </DropdownItem>
+    </div>
   );
 }
 

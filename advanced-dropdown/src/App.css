@@ -1,6 +1,7 @@
 :root {
   --bg: #242526;
   --bg-accent: #3a3b3c;
+  --bg-hover: #303233;
   --text: #dcdcdc;
   --border: 1px solid #474a4d;
   --radius: 8px;
@@ -78,4 +79,37 @@ a {
   fill: var(--text);
   width: 32px;
   height: 32px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 64px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background-color: var(--bg);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  overflow: hidden;
+  transform: translateX(-128px);
+}
+
+.menu-item {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  transition: background var(--speed);
+}
+
+.menu-item:hover {
+  background-color: var(--bg-hover);
+}
+
+.icon-right {
+  margin-left: auto;
 }
