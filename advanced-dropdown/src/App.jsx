@@ -1,13 +1,18 @@
 import "./App.css";
+import {
+  RiGridFill,
+  RiMessengerFill,
+  RiAddFill,
+  RiNotification2Fill,
+} from "react-icons/ri";
 
 function App() {
   return (
     <Navbar>
-      <NavItem icon="69" />
-      <NavItem icon="420" />
-      <NavItem icon="🚀" />
-      <NavItem icon="👩‍🚀" />
-      <NavItem icon="👨‍🚀" />
+      <NavItem icon={<RiGridFill />} />
+      <NavItem icon={<RiAddFill />} />
+      <NavItem icon={<RiMessengerFill />} />
+      <NavItem icon={<RiNotification2Fill />} />
     </Navbar>
   );
 }
