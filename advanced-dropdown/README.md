@@ -22,3 +22,8 @@ Notes:
      - props for parent
 3. State:
    - eg: open state for dropdown
+4. CSSTransition
+   - react-transition-group ++
+   - ^ use to animate dropdowns
+   - parent dropdown
+     - children or sibling dropdown

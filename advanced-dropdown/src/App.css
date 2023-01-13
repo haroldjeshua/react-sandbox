@@ -117,6 +117,8 @@ a {
 .menu {
   width: 100%;
 }
+
+/* First Menu Dropdown */
 .menu-primary-enter {
   position: absolute;
   transform: translateX(-110%);
@@ -130,5 +132,21 @@ a {
 }
 .menu-primary-exit-active {
   transform: translateX(-110%);
+  transition: all var(--speed) ease;
+}
+
+/* Second Menu Dropdown */
+.menu-secondary-enter {
+  position: absolute;
+  transform: translateX(110%);
+}
+.menu-secondary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+.menu-secondary-exit {
+}
+.menu-secondary-exit-active {
+  transform: translateX(110%);
   transition: all var(--speed) ease;
 }
