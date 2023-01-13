@@ -16,7 +16,7 @@ import {
   RiListCheck,
   RiRotateLockFill,
 } from "react-icons/ri";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 
 function App() {
@@ -58,6 +58,20 @@ function NavItem(props) {
 function DropdownMenu() {
   const [activeMenu, setActiveMenu] = useState("main"); // settings context
 
+  // menu dropdown height transition fix
+  const [menuHeight, setMenuHeight] = useState(null);
+
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    setMenuHeight(dropdownRef.current?.firstChild.offsetHeight);
+  }, []);
+
+  function calcHeight(el) {
+    const height = el.clientHeight;
+    setMenuHeight(height);
+  }
+
   function DropdownItem(props) {
     return (
       <a
@@ -73,12 +87,17 @@ function DropdownMenu() {
   }
 
   return (
-    <div className="dropdown">
+    <div
+      className="dropdown"
+      style={{ height: menuHeight + 34 }}
+      ref={dropdownRef}
+    >
       <CSSTransition
         in={activeMenu === "main"}
         unmountOnExit
         timeout={500}
         classNames="menu-primary"
+        onEnter={calcHeight}
       >
         <div className="menu">
           <DropdownItem leftIcon={<RiAccountCircleFill />}>
@@ -89,7 +108,7 @@ function DropdownMenu() {
             rightIcon={<RiArrowRightSLine />}
             goToMenu="settings"
           >
-            My Settings
+            Settings & Privacy
           </DropdownItem>
           <DropdownItem leftIcon={<RiFeedbackFill />}>
             Give Feedback
@@ -102,10 +121,11 @@ function DropdownMenu() {
         unmountOnExit
         timeout={500}
         classNames="menu-secondary"
+        onEnter={calcHeight}
       >
         <div className="menu">
           <DropdownItem leftIcon={<RiArrowLeftLine />} goToMenu="main">
-            Settings
+            Settings & Privacy
           </DropdownItem>
           <DropdownItem leftIcon={<RiSettings5Fill />}>Settings</DropdownItem>
           <DropdownItem leftIcon={<RiRotateLockFill />}>

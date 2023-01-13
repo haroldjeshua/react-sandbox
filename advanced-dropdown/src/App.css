@@ -85,6 +85,7 @@ a {
   position: absolute;
   top: 64px;
   width: 300px;
+  min-height: max-content;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -94,6 +95,7 @@ a {
   padding: 1rem;
   overflow: hidden;
   transform: translateX(-128px);
+  transition: height var(--speed) ease;
 }
 
 .menu-item {
@@ -144,8 +146,8 @@ a {
   transform: translateX(0%);
   transition: all var(--speed) ease;
 }
-.menu-secondary-exit {
-}
+/* .menu-secondary-exit {
+} */
 .menu-secondary-exit-active {
   transform: translateX(110%);
   transition: all var(--speed) ease;
