@@ -7,6 +7,9 @@ import {
   RiArrowDownSFill,
   RiSettings5Fill,
   RiArrowRightSLine,
+  RiArrowLeftLine,
+  RiFeedbackFill,
+  RiAccountCircleFill,
 } from "react-icons/ri";
 import { useState } from "react";
 import { CSSTransition } from "react-transition-group";
@@ -52,7 +55,11 @@ function DropdownMenu() {
 
   function DropdownItem(props) {
     return (
-      <a href="#" className="menu-item">
+      <a
+        href="#"
+        className="menu-item"
+        onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}
+      >
         <span className="icon-button">{props.leftIcon}</span>
         {props.children}
         <span className="icon-right">{props.rightIcon}</span>
@@ -69,10 +76,13 @@ function DropdownMenu() {
         classNames="menu-primary"
       >
         <div className="menu">
-          <DropdownItem>My Profile</DropdownItem>
+          <DropdownItem leftIcon={<RiAccountCircleFill />}>
+            My Profile
+          </DropdownItem>
           <DropdownItem
             leftIcon={<RiSettings5Fill />}
             rightIcon={<RiArrowRightSLine />}
+            goToMenu="settings"
           >
             My Settings
           </DropdownItem>
@@ -89,6 +99,9 @@ function DropdownMenu() {
         classNames="menu-secondary"
       >
         <div className="menu">
+          <DropdownItem leftIcon={<RiArrowLeftLine />} goToMenu="main">
+            Settings
+          </DropdownItem>
           <DropdownItem>Settings</DropdownItem>
         </div>
       </CSSTransition>
