@@ -4,6 +4,10 @@ function App() {
   return (
     <Navbar>
       <NavItem icon="69" />
+      <NavItem icon="420" />
+      <NavItem icon="🚀" />
+      <NavItem icon="👩‍🚀" />
+      <NavItem icon="👨‍🚀" />
     </Navbar>
   );
 }
