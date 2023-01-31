@@ -7,3 +7,5 @@ React projects for building user interfaces based on UI components.
 3. multi-select (w/ SCSS)
 4. classic-tictactoe
 5. image-slider (w/ TailwindCSS)
+6. advanced-dropdown (w/ react-transition-group)
+7. expandable-card (w/ Framer Motion)
