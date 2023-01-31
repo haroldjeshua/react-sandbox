@@ -1,5 +1,13 @@
 :root {
+  --main-900: #27146b;
+  --main-800: #321a8a;
+  --main-700: #3e22a5;
+  --main-600: #4b29c5;
   --main: #5931e9;
+  --main-400: #6945eb;
+  --main-300: #7a5be7;
+  --main-200: #8b72e4;
+  --main-100: #9c89e0;
   --dark: #121212;
   --grey: #242424;
   --light: #dcdcdc;
@@ -21,7 +29,13 @@ body {
   max-width: 256px;
   background-color: var(--dark);
   padding: 2rem;
-  border-radius: 16px;
+  border-radius: 1rem;
+  box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
 }
 
 .card p {

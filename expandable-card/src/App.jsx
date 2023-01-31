@@ -15,13 +15,14 @@ function App() {
       >
         <motion.h2 layout="position">Framer Motion 🚀</motion.h2>
         {isOpen && (
-          <motion.div>
+          <motion.div className="text-content">
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.
               Doloribus praesentium quos perferendis nesciunt aspernatur aliquid
               natus ex magnam!
             </p>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <button>Learn More</button>
           </motion.div>
         )}
       </motion.div>
