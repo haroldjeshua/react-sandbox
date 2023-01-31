@@ -15,7 +15,12 @@ function App() {
       >
         <motion.h2 layout="position">Framer Motion 🚀</motion.h2>
         {isOpen && (
-          <motion.div className="text-content">
+          <motion.div
+            className="text-content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.
               Doloribus praesentium quos perferendis nesciunt aspernatur aliquid
