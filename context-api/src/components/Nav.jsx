@@ -4,8 +4,7 @@ import { FiShoppingBag } from "react-icons/fi";
 import CartContext from "../CartContext";
 
 const Nav = () => {
-  const { item } = useContext(CartContext);
-  console.log(item);
+  const { items } = useContext(CartContext);
   return (
     <nav className="fixed top-0 left-0 w-screen h-12 flex justify-between items-center gap-4 bg-neutral-900">
       <div className="w-full max-w-xl h-inherit mx-auto flex justify-between items-center">
@@ -15,7 +14,7 @@ const Nav = () => {
         <Link to="/checkout">
           <div className="h-12 flex items-center gap-2">
             <FiShoppingBag />
-            <span>0</span>
+            <span>{items.length}</span>
           </div>
         </Link>
       </div>

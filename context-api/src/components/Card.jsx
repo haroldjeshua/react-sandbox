@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import CartContext from "../CartContext";
 import { IoShirtOutline } from "react-icons/io5";
 import { FiShoppingBag } from "react-icons/fi";
 
 const Card = ({ name, price }) => {
+  const { addToCart } = useContext(CartContext);
+
   return (
-    <div className="flex flex-col bg-neutral-900 rounded-lg transition ease-linear hover:-translate-y-1 cursor-pointer">
+    <div
+      onClick={() => addToCart(name, price)}
+      className="flex flex-col bg-neutral-900 rounded-lg transition ease-linear hover:-translate-y-1 cursor-pointer"
+    >
       <div className="flex justify-center p-4">
         <IoShirtOutline size={100} />
       </div>
