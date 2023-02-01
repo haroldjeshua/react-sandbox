@@ -12,9 +12,9 @@ const Products = () => {
   ];
 
   return (
-    <div className="product-list">
-      {products.map((product) => (
-        <Card name={product.name} price={product.price} />
+    <div className="w-full max-w-xl h-[calc(100vh_-_48px)] mx-auto grid grid-cols-4 place-content-center gap-4">
+      {products.map((product, index) => (
+        <Card key={index} name={product.name} price={product.price} />
       ))}
     </div>
   );
