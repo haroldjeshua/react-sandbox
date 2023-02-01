@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Nav from "./components/Nav";
 import Products from "./components/Products";
 import { CartProvider } from "./CartContext";
+import Checkout from "./components/Checkout";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/" element={<Products />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </BrowserRouter>
       </CartProvider>
