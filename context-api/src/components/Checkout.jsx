@@ -19,6 +19,9 @@ const Checkout = () => {
             </div>
           ))}
         </div>
+        <button className="w-32 h-12 inline-flex justify-center items-center self-center gap-2 bg-neutral-900 mt-auto rounded-xl">
+          Checkout
+        </button>
       </div>
     </div>
   );
