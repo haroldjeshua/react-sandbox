@@ -9,3 +9,5 @@ React projects for building user interfaces based on UI components.
 5. image-slider (w/ TailwindCSS)
 6. advanced-dropdown (w/ react-transition-group)
 7. expandable-card (w/ Framer Motion)
+8. context-api (useContext)
+9. anim-filter (w/ Framer Motion)
