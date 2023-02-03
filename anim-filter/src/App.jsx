@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
+import Movie from "./components/Movie";
 
 function App() {
   const [popular, setPopular] = useState([]);
-
-  console.log(import.meta.env.VITE_REACT_APP_TMDB_API_KEY);
 
   useEffect(() => {
     fetchPopular();
@@ -16,11 +15,18 @@ function App() {
       }&language=en-US&page=1`
     );
     const movies = await data.json();
-    console.log(movies);
     setPopular(movies.result);
   };
 
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <div className="App">
+      <div className="grid grid-cols-4 gap-4">
+        {popular.map((movie) => {
+          return <Movie key={movie.id} movie={movie} />;
+        })}
+      </div>
+    </div>
+  );
 }
 
 export default App;
