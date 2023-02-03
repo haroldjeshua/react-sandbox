@@ -15,7 +15,8 @@ function App() {
       }&language=en-US&page=1`
     );
     const movies = await data.json();
-    setPopular(movies.result);
+    console.log(movies);
+    setPopular(movies.results);
   };
 
   return (
