@@ -32,7 +32,7 @@ function App() {
         setActiveGenre={setActiveGenre}
       />
       <div className="grid grid-cols-4 gap-4">
-        {popular.map((movie) => {
+        {filtered.map((movie) => {
           return <Movie key={movie.id} movie={movie} />;
         })}
       </div>
