@@ -4,6 +4,7 @@ import Filter from "./components/Filter";
 
 function App() {
   const [popular, setPopular] = useState([]);
+  const [filtered, setFiltered] = useState([]);
 
   useEffect(() => {
     fetchPopular();
@@ -18,6 +19,7 @@ function App() {
     const movies = await data.json();
     console.log(movies);
     setPopular(movies.results);
+    setFiltered(movies.results);
   };
 
   return (
