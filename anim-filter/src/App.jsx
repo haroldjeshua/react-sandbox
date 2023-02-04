@@ -5,6 +5,7 @@ import Filter from "./components/Filter";
 function App() {
   const [popular, setPopular] = useState([]);
   const [filtered, setFiltered] = useState([]);
+  const [activeGenre, setActiveGenre] = useState(0);
 
   useEffect(() => {
     fetchPopular();
@@ -23,8 +24,13 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Filter />
+    <div className="App px-4">
+      <Filter
+        popular={popular}
+        setFiltered={setFiltered}
+        activeGenre={activeGenre}
+        setActiveGenre={setActiveGenre}
+      />
       <div className="grid grid-cols-4 gap-4">
         {popular.map((movie) => {
           return <Movie key={movie.id} movie={movie} />;
