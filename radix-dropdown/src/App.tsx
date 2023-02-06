@@ -1,8 +1,9 @@
 import { ReactNode, useState } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { motion } from "framer-motion";
 
 function App() {
- let [text, setText] = useState("Select an item")
+  let [text, setText] = useState("Select an item");
 
   return (
     <div className="flex min-h-full items-center justify-center">
@@ -16,15 +17,21 @@ function App() {
             <DropdownMenu.Portal>
               <DropdownMenu.Content
                 align="start"
+                asChild
                 className="mt-1 overflow-hidden rounded bg-white/75 p-2 text-left shadow backdrop-blur"
               >
-                <Item onSelect={() => setText("Clicked Item 1")}>Item 1</Item>
-                <Item onSelect={() => setText("Clicked Item 2")}>Item 2</Item>
-                <Item onSelect={() => alert("😊")}>Item 3</Item>
+                <motion.div initial={{opacity:0}} animate={{opacity:1}}>
+                  <Item onSelect={() => setText("Clicked Item 1")}>Item 1</Item>
+                  <Item onSelect={() => setText("Clicked Item 2")}>Item 2</Item>
+                  <Item onSelect={() => alert("😊")}>Item 3</Item>
+                </motion.div>
               </DropdownMenu.Content>
             </DropdownMenu.Portal>
           </DropdownMenu.Root>
         </header>
+        <div className="px-6 py-8 text-right">
+          <p>{text}</p>
+        </div>
       </div>
     </div>
   );
