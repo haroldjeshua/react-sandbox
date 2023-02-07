@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 function App() {
+  const [step, setStep] = useState(1);
+
   return (
     <div className="flex min-h-screen items-start bg-gradient-to-br from-slate-700 to-slate-900 pt-44">
       <div className="mx-auto w-full max-w-md rounded-2xl bg-white">
@@ -19,8 +23,14 @@ function App() {
             </div>
 
             <div className="flex justify-between mt-10">
-              <button className="rounded px-2 py-1 text-slate-400 hover:text-slate-700">
+              <button
+                className="rounded px-2 py-1 text-slate-400 hover:text-slate-700"
+                onClick={() => setStep(step > 2 ? step : step - 1)}
+              >
                 Back
+              </button>
+              <button className="flex items-center justify-center rounded-full text-white bg-blue-600 py-1.5 px-1.5 font-medium tracking-tight hover:bg-blue-700 active:bg-blue-800">
+                Continue
               </button>
             </div>
           </div>
