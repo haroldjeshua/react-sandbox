@@ -8,13 +8,14 @@ function App() {
   let controls = useAnimationControls();
 
   async function closeMenu() {
-    await controls.start({ opacity: 0 })
+    // controls can also have a variant name
+    await controls.start("closed");
     setOpen(false);
   }
 
   useEffect(() => {
     if (open) {
-      controls.start({ opacity: 1 });
+      controls.start("open");
     }
   }, [controls, open]);
 
@@ -36,9 +37,25 @@ function App() {
                     className="mt-1 overflow-hidden rounded bg-white/75 p-2 text-left shadow backdrop-blur"
                   >
                     <motion.div
-                      initial={{ opacity: 0 }}
+                      initial="closed"
                       animate={controls}
-                      exit={{ opacity: 0 }}
+                      exit="closed"
+                      variants={{
+                        open: {
+                          opacity: 1,
+                          transition: {
+                            ease: "easeOut",
+                            duration: 0.1,
+                          },
+                        },
+                        closed: {
+                          opacity: 0,
+                          transition: {
+                            ease: "easeIn",
+                            duration: 0.2,
+                          },
+                        },
+                      }}
                     >
                       <Item
                         closeMenu={closeMenu}
@@ -88,13 +105,14 @@ function Item({
         await controls.start({
           backgroundColor: "#fff",
           color: "#121212",
-          transition: { duration: 0.25 },
+          transition: { duration: 0.04 },
         });
         await controls.start({
           backgroundColor: "#38bdf8",
           color: "#000",
-          transition: { duration: 0.25 },
+          transition: { duration: 0.04 },
         });
+        await sleep(0.075);
 
         await closeMenu();
         onSelect();
@@ -106,5 +124,7 @@ function Item({
     </DropdownMenu.Item>
   );
 }
+
+const sleep = (s: number) => new Promise((resolve) => setTimeout(resolve, s * 1000))
 
 export default App;
