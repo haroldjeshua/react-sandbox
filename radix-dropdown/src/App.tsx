@@ -1,14 +1,22 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 
 function App() {
   let [text, setText] = useState("Select an item");
   let [open, setOpen] = useState(false);
+  let controls = useAnimationControls();
 
-  function closeMenu() {
-    setOpen(false)
+  async function closeMenu() {
+    await controls.start({ opacity: 0 })
+    setOpen(false);
   }
+
+  useEffect(() => {
+    if (open) {
+      controls.start({ opacity: 1 });
+    }
+  }, [controls, open]);
 
   return (
     <div className="flex min-h-full items-center justify-center">
@@ -29,16 +37,24 @@ function App() {
                   >
                     <motion.div
                       initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
+                      animate={controls}
                       exit={{ opacity: 0 }}
                     >
-                      <Item closeMenu={closeMenu} onSelect={() => setText("Clicked Item 1")}>
+                      <Item
+                        closeMenu={closeMenu}
+                        onSelect={() => setText("Clicked Item 1")}
+                      >
                         Item 1
                       </Item>
-                      <Item closeMenu={closeMenu} onSelect={() => setText("Clicked Item 2")}>
+                      <Item
+                        closeMenu={closeMenu}
+                        onSelect={() => setText("Clicked Item 2")}
+                      >
                         Item 2
                       </Item>
-                      <Item closeMenu={closeMenu} onSelect={() => alert("😊")}>Item 3</Item>
+                      <Item closeMenu={closeMenu} onSelect={() => alert("😊")}>
+                        Item 3
+                      </Item>
                     </motion.div>
                   </DropdownMenu.Content>
                 </DropdownMenu.Portal>
@@ -57,7 +73,7 @@ function App() {
 function Item({
   children,
   onSelect = () => {},
-  closeMenu
+  closeMenu,
 }: {
   children: ReactNode;
   onSelect?: () => void;
@@ -80,7 +96,7 @@ function Item({
           transition: { duration: 0.25 },
         });
 
-        closeMenu()
+        await closeMenu();
         onSelect();
       }}
       asChild
