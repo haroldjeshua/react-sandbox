@@ -1,10 +1,14 @@
 import { ReactNode, useState } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 
 function App() {
   let [text, setText] = useState("Select an item");
-  const [open, setOpen] = useState(false)
+  let [open, setOpen] = useState(false);
+
+  function closeMenu() {
+    setOpen(false)
+  }
 
   return (
     <div className="flex min-h-full items-center justify-center">
@@ -17,28 +21,27 @@ function App() {
 
             <AnimatePresence>
               {open && (
-
-              <DropdownMenu.Portal forceMount>
-                <DropdownMenu.Content
-                  align="start"
-                  asChild
-                  className="mt-1 overflow-hidden rounded bg-white/75 p-2 text-left shadow backdrop-blur"
-                >
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                <DropdownMenu.Portal forceMount>
+                  <DropdownMenu.Content
+                    align="start"
+                    asChild
+                    className="mt-1 overflow-hidden rounded bg-white/75 p-2 text-left shadow backdrop-blur"
                   >
-                    <Item onSelect={() => setText("Clicked Item 1")}>
-                      Item 1
-                    </Item>
-                    <Item onSelect={() => setText("Clicked Item 2")}>
-                      Item 2
-                    </Item>
-                    <Item onSelect={() => alert("😊")}>Item 3</Item>
-                  </motion.div>
-                </DropdownMenu.Content>
-              </DropdownMenu.Portal>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <Item closeMenu={closeMenu} onSelect={() => setText("Clicked Item 1")}>
+                        Item 1
+                      </Item>
+                      <Item closeMenu={closeMenu} onSelect={() => setText("Clicked Item 2")}>
+                        Item 2
+                      </Item>
+                      <Item closeMenu={closeMenu} onSelect={() => alert("😊")}>Item 3</Item>
+                    </motion.div>
+                  </DropdownMenu.Content>
+                </DropdownMenu.Portal>
               )}
             </AnimatePresence>
           </DropdownMenu.Root>
@@ -54,16 +57,36 @@ function App() {
 function Item({
   children,
   onSelect = () => {},
+  closeMenu
 }: {
   children: ReactNode;
   onSelect?: () => void;
+  closeMenu: () => void;
 }) {
+  let controls = useAnimationControls();
+
   return (
     <DropdownMenu.Item
-      onSelect={onSelect}
+      onSelect={async (e) => {
+        e.preventDefault();
+        await controls.start({
+          backgroundColor: "#fff",
+          color: "#121212",
+          transition: { duration: 0.25 },
+        });
+        await controls.start({
+          backgroundColor: "#38bdf8",
+          color: "#000",
+          transition: { duration: 0.25 },
+        });
+
+        closeMenu()
+        onSelect();
+      }}
+      asChild
       className="w-40 select-none rounded px-2 py-1.5 text-gray-700 data-[highlighted]:bg-sky-400 data-[highlighted]:text-white data-[highlighted]:focus:outline-none"
     >
-      {children}
+      <motion.div animate={controls}>{children}</motion.div>
     </DropdownMenu.Item>
   );
 }
