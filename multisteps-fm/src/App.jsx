@@ -56,17 +56,23 @@ function Step({ step, currentStep }) {
   return (
     <motion.div
       initial={false}
-      animate={{
-        backgroundColor:
-          status === "complete" ? "var(--blue-600)" : "var(--white)",
-        borderColor:
-          status === "complete" || status === "active"
-            ? "var(--blue-600)"
-            : "var(--slate-200)",
-        color:
-          status === "complete" || status === "active"
-            ? "var(--blue-600)"
-            : "var(--slate-400)",
+      animate={status}
+      variants={{
+        inactive: {
+          backgroundColor: "var(--white)",
+          borderColor: "var(--slate-200)",
+          color: "var(--slate-400)",
+        },
+        active: {
+          backgroundColor: "var(--white)",
+          borderColor: "var(--blue-600)",
+          color: "var(--blue-600)",
+        },
+        complete: {
+          backgroundColor: "var(--blue-600)",
+          borderColor: "var(--blue-600)",
+          color: "var(--blue-600)",
+        },
       }}
       transition={{ duration: 1 }}
       className={`${
