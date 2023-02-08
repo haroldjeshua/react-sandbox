@@ -54,12 +54,12 @@ function Step({ step, currentStep }) {
       : "complete";
 
   return (
-    <div className="relative">
+    <motion.div animate={status} className="relative">
       <motion.div
-        animate={status}
         variants={{
           active: {
             scale: 1,
+            transition: { delay: 0, duration: 0.2 },
           },
           complete: {
             scale: 1.25,
@@ -75,7 +75,6 @@ function Step({ step, currentStep }) {
       ></motion.div>
       <motion.div
         initial={false}
-        animate={status}
         variants={{
           inactive: {
             backgroundColor: "var(--white)",
@@ -104,7 +103,7 @@ function Step({ step, currentStep }) {
           )}
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
 
