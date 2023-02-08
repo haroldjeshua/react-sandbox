@@ -74,7 +74,7 @@ function Step({ step, currentStep }) {
           color: "var(--blue-600)",
         },
       }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.25 }}
       className={`${
         status === "active"
           ? "border-blue-600 bg-white text-blue-600"
@@ -103,7 +103,19 @@ function CheckIcon(props) {
       stroke="currentColor"
       strokeWidth={3}
     >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+      <motion.path
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{
+          delay: 0.2,
+          type: "tween",
+          ease: "easeOut",
+          duration: 0.3,
+        }}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5 13l4 4L19 7"
+      />
     </svg>
   );
 }
