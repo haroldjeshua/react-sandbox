@@ -33,6 +33,14 @@ body {
   padding: 0.25rem;
 }
 
+.nav li {
+  border-radius: 4px;
+}
 .nav li.active {
   background-color: #2e34a7;
+}
+
+.container {
+  margin: 1rem;
+  text-align: center;
 }

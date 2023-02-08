@@ -1,24 +1,31 @@
 import React from "react";
 
 const Navbar = () => {
+  const path = window.location.pathname;
   return (
     <nav className="nav">
       <a href="/" className="nav-title">
         Harv.io
       </a>
       <ul>
-        <li>
-          <a href="/work">Work</a>
-        </li>
-        <li>
-          <a href="/about">About</a>
-        </li>
-        <li>
-          <a href="/contact">Contact</a>
-        </li>
+        <CustomLink href="/work">Work</CustomLink>
+        <CustomLink href="/about">About</CustomLink>
+        <CustomLink href="/contact">Contact</CustomLink>
       </ul>
     </nav>
   );
 };
+
+function CustomLink({ href, children, ...props }) {
+  const path = window.location.pathname;
+
+  return (
+    <li className={path === href ? "active" : ""}>
+      <a href={href} {...props}>
+        {children}
+      </a>
+    </li>
+  );
+}
 
 export default Navbar;
