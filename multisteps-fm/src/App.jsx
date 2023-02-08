@@ -17,9 +17,9 @@ function App() {
           <div>
             <div className="mt-2 h-6 w-40 rounded bg-slate-100" />
             <div className="mt-4 space-y-2">
-              <div className="h-4 w-5/6 rounded bg-slate-100" />
-              <div className="h-4 rounded bg-slate-100" />
-              <div className="h-4 w-4/6 rounded bg-slate-100" />
+              <div className="h-4 w-5/6 rounded bg-slate-200" />
+              <div className="h-4 rounded bg-slate-200" />
+              <div className="h-4 w-4/6 rounded bg-slate-200" />
             </div>
           </div>
 
@@ -61,8 +61,9 @@ function Step({ step, currentStep }) {
         borderColor:
           status === "complete" || status === "active"
             ? "var(--blue-600)"
-            : "var(--slate-200)",
+            : "var(--slate-400)",
       }}
+      transition={{ duration: 1 }}
       className={`${
         status === "active"
           ? "border-blue-600 bg-white text-blue-600"
