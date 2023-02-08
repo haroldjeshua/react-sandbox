@@ -55,7 +55,14 @@ function Step({ step, currentStep }) {
 
   return (
     <motion.div
-      animate={{ backgroundColor: status === "complete" ? "#2563eb" : "#fff" }}
+      animate={{
+        backgroundColor:
+          status === "complete" ? "var(--blue-600)" : "var(--white)",
+        borderColor:
+          status === "complete" || status === "active"
+            ? "var(--blue-600)"
+            : "var(--slate-200)",
+      }}
       className={`${
         status === "active"
           ? "border-blue-600 bg-white text-blue-600"
