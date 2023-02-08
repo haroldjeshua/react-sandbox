@@ -54,43 +54,57 @@ function Step({ step, currentStep }) {
       : "complete";
 
   return (
-    <motion.div
-      initial={false}
-      animate={status}
-      variants={{
-        inactive: {
-          backgroundColor: "var(--white)",
-          borderColor: "var(--slate-200)",
-          color: "var(--slate-400)",
-        },
-        active: {
-          backgroundColor: "var(--white)",
-          borderColor: "var(--blue-600)",
-          color: "var(--blue-600)",
-        },
-        complete: {
-          backgroundColor: "var(--blue-600)",
-          borderColor: "var(--blue-600)",
-          color: "var(--blue-600)",
-        },
-      }}
-      transition={{ duration: 0.25 }}
-      className={`${
-        status === "active"
-          ? "border-blue-600 bg-white text-blue-600"
-          : status === "complete"
-          ? "border-blue-600 bg-blue-600"
-          : "border-slate-200 bg-white text-slate-400"
-      } flex w-10 h-10 items-center justify-center rounded-full border-2 font-semibold`}
-    >
-      <div className="flex items-center justify-center">
-        {status === "complete" ? (
-          <CheckIcon className="w-8 h-8 text-white" />
-        ) : (
-          <span>{step}</span>
-        )}
-      </div>
-    </motion.div>
+    <div className="relative">
+      <motion.div
+        animate={status}
+        variants={{
+          active: {
+            scale: 1,
+          },
+          complete: {
+            scale: 1.25,
+          },
+        }}
+        transition={{
+          duration: 0.5,
+          delay: 0.2,
+          type: "tween",
+          ease: "circOut",
+        }}
+        className="absolute inset-0 bg-blue-200 rounded-full"
+      ></motion.div>
+      <motion.div
+        initial={false}
+        animate={status}
+        variants={{
+          inactive: {
+            backgroundColor: "var(--white)",
+            borderColor: "var(--slate-200)",
+            color: "var(--slate-400)",
+          },
+          active: {
+            backgroundColor: "var(--white)",
+            borderColor: "var(--blue-600)",
+            color: "var(--blue-600)",
+          },
+          complete: {
+            backgroundColor: "var(--blue-600)",
+            borderColor: "var(--blue-600)",
+            color: "var(--blue-600)",
+          },
+        }}
+        transition={{ duration: 0.25 }}
+        className={`relative flex w-10 h-10 items-center justify-center rounded-full border-2 font-semibold`}
+      >
+        <div className="flex items-center justify-center">
+          {status === "complete" ? (
+            <CheckIcon className="w-8 h-8 text-white" />
+          ) : (
+            <span>{step}</span>
+          )}
+        </div>
+      </motion.div>
+    </div>
   );
 }
 
