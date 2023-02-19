@@ -1,7 +1,7 @@
 import { BubblyLink } from "react-bubbly-transitions";
 
 const HarvBubblyLink = ({ to = "", text = "" }) => (
-  <BubblyLink to={to} colorStart="#4d20f0" colorEnd="#fff">
+  <BubblyLink to={to} colorStart="#4d20f0" colorEnd="#242424">
     {text}
   </BubblyLink>
 );

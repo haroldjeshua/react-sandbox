@@ -10,6 +10,7 @@ const Contact = () => <section>Contact</section>;
 function App() {
   return (
     <BrowserRouter>
+      <BubblyContainer />
       <Routes>
         <Route
           path="/"
