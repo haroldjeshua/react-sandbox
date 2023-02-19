@@ -12,7 +12,7 @@ const Nav = () => {
       <HarvBubblyLink to="/" text="Home" />
       <HarvBubblyLink to="/work" text="Work" />
       <HarvBubblyLink to="/about" text="About" />
-      <HarvBubblyLink to="/contact" text="Cotnact" />
+      <HarvBubblyLink to="/contact" text="Contact" />
     </nav>
   );
 };

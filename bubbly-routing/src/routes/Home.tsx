@@ -1,4 +1,5 @@
 import Nav from "../components/Nav";
+import Section from "../components/Section";
 import Title from "../components/Title";
 
 const Wrapper = () => {
@@ -8,6 +9,7 @@ const Wrapper = () => {
         <Title>Home</Title>
         <Nav />
       </header>
+      <Section>Home</Section>
     </>
   );
 };
