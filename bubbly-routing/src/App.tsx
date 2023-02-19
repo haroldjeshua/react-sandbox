@@ -15,10 +15,10 @@ function App() {
           path="/"
           element={
             <>
-              <Link to="/">Home</Link>
-              <Link to="/work">Work</Link>
-              <Link to="/about">About</Link>
-              <Link to="/contact">Contact</Link>
+              <BubblyLink to="/">Home</BubblyLink>
+              <BubblyLink to="/work">Work</BubblyLink>
+              <BubblyLink to="/about">About</BubblyLink>
+              <BubblyLink to="/contact">Contact</BubblyLink>
               <Outlet />
             </>
           }

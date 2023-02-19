@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+/* bubbly link styling */
+body .react-bubbly-transitions__bubbly-link {
+  color: #4d20f0;
+}
+
+body .react-bubbly-transitions__bubbly-link.active {
+  text-decoration: underline;
+}
