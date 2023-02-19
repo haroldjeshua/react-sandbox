@@ -1,8 +1,9 @@
 #root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
 .logo {
@@ -41,15 +42,24 @@
   color: #888;
 }
 
+/* Custom */
 header {
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 1rem;
 }
 
 nav {
   display: flex;
-  gap: 10px;
+  gap: 1rem;
+}
+
+section {
+  height: calc(100% - 64px);
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes in-keyframes {

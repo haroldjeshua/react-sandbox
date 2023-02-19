@@ -6,10 +6,12 @@ const Wrapper = () => {
   return (
     <>
       <header>
-        <Title>Home</Title>
+        <Title />
         <Nav />
       </header>
-      <Section>Home</Section>
+      <Section>
+        <h1>Home</h1>
+      </Section>
     </>
   );
 };

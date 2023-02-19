@@ -1,13 +1,17 @@
 import Nav from "../components/Nav";
+import Section from "../components/Section";
 import Title from "../components/Title";
 
 const Wrapper = () => {
   return (
     <>
       <header>
-        <Title>Contact</Title>
+        <Title />
         <Nav />
       </header>
+      <Section>
+        <h1>Contact</h1>
+      </Section>
     </>
   );
 };
