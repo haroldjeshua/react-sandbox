@@ -1,4 +1,5 @@
 import { ChangeEvent, useRef, useState } from "react";
+import "./styles.css";
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState("");
