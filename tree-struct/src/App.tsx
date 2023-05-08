@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 
 const files = {
@@ -7,6 +8,14 @@ const files = {
       children: [
         {
           name: "harv",
+          children: [
+            {
+              name: "subfolder1",
+            },
+            {
+              name: "harold.js",
+            },
+          ],
         },
       ],
     },
@@ -24,8 +33,27 @@ type TEntry = {
   children?: TEntry[];
 };
 
-function Entry({ name, children }: TEntry) {
-  return <div>{name}</div>;
+function Entry({ entry, depth }: { entry: TEntry; depth: number }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div>
+      {entry.children ? (
+        <button className="entry" onClick={() => setIsExpanded(!isExpanded)}>
+          {isExpanded ? "-" : "+"} {entry.name}
+        </button>
+      ) : (
+        <div>{entry.name}</div>
+      )}
+      {isExpanded && (
+        <div style={{ paddingLeft: `${depth * 10}px` }}>
+          {entry.children?.map((entry) => (
+            <Entry entry={entry} depth={depth + 1} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
 function App() {
@@ -33,7 +61,7 @@ function App() {
   return (
     <div className="App">
       {files.children.map((entry) => (
-        <Entry {...entry} />
+        <Entry entry={entry} depth={1} />
       ))}
     </div>
   );
