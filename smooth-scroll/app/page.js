@@ -1,14 +1,14 @@
 "use client";
 import { useEffect } from "react";
-import Intro from "@/components/Intro/Intro";
+import Intro from "@/components/Intro";
 import styles from "./page.module.css";
 
 export default function Home() {
   useEffect(() => {
-    async () => {
+    (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
       const locomotiveScroll = new LocomotiveScroll();
-    };
+    })();
   }, []);
 
   return (
