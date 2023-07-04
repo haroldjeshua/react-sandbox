@@ -30,7 +30,7 @@ function AnimatedText({ children }) {
       scrollTrigger: {
         trigger: text.current,
         start: "0px bottom",
-        end: "bottom+=300px bottom",
+        end: "bottom+=128px bottom",
         scrub: true,
       },
       opacity: 0,
