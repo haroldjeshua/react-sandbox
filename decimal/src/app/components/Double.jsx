@@ -9,9 +9,18 @@ export default function Double({ projects, reversed }) {
 
   let requestAnimationFrameId = null;
   let xPercent = reversed ? 100 : 0;
-  let currentXPercent = reversed ? 100: 0;
+  let currentXPercent = reversed ? 100 : 0;
 
   const speed = 0.15;
+
+  const manageMouseMove = (e) => {
+    const { clientX } = e;
+    xPercent = (clientX / window.innerWidth) * 100;
+
+    if (!requestAnimationFrameId) {
+      requestAnimationFrameId = window.requestAnimationFrame(animate)
+    }
+  }
 
   const animate = () => {
     // Add easing in animation
@@ -25,10 +34,17 @@ export default function Double({ projects, reversed }) {
 
     oddImage.current.style.width = `${oddImagePercent}%`;
     evenImage.current.style.width = `${evenImagePercent}%`;
+
+    if (Math.round(xPercent) == Math.round(currentXPercent)) {
+      window.cancelAnimationFrame(requestAnimationFrameId)
+      requestAnimationFrameId = null
+    } else {
+      window.requestAnimationFrame(animate)
+    }
   }
 
   return (
-    <section className={styles.double}>
+    <section className={styles.double} onMouseMove={e => {manageMouseMove(e)}}>
       <div className={styles.imageContainer} ref={oddImage}>
         <div className={styles.stretchyContainer}>
           <Image fill={true} alt={"image"} src={projects[0].src} />
